@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "241787319097",
+    "project_id": "hashem-notemaster",
+    "storage_bucket": "hashem-notemaster.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241787319097:android:cd5b4096324f94ff036ee8",
+        "android_client_info": {
+          "package_name": "com.hashem.notemaster.notemaster"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCW6Pj-BhT4rlPbdGiNiu4CMgXsRxEO8C4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
