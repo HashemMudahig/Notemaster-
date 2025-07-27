@@ -8,6 +8,7 @@ import 'package:notemaster/views/login_view.dart';
 import 'package:notemaster/views/register_view.dart';
 import 'package:notemaster/views/verify_email_view.dart';
 import 'dart:developer' as devtools show log;
+import 'constants/routes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,9 +20,9 @@ void main() {
       ),
       home: const Homepage(),
       routes: {
-        '/login/': (context) => const LoginView(),
-        '/register/': (context) => const RegisterView(),
-        '/notes/': (context) => const NotesView(),
+        AppRoutes.login: (context) => const LoginView(),
+        AppRoutes.register: (context) => const RegisterView(),
+        AppRoutes.notes: (context) => const NotesView(),
       },
     ),
   );
@@ -92,7 +93,7 @@ class _NotesViewState extends State<NotesView> {
                     await FirebaseAuth.instance.signOut();
                     Navigator.of(
                       context,
-                    ).pushNamedAndRemoveUntil('/login/', (__) => false);
+                    ).pushNamedAndRemoveUntil(AppRoutes.login, (__) => false);
                   }
                   devtools.log(shouldLogout.toString());
               } // print the selected value
