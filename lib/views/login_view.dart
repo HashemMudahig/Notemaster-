@@ -66,11 +66,22 @@ class _LoginViewState extends State<LoginView> {
                   context,
                 ).pushNamedAndRemoveUntil(AppRoutes.notes, (route) => false);
               } on FirebaseAuthException catch (e) {
+                String errorMessage;
+
                 if (e.code == 'user-not-found') {
-                  devtools.log("user not found ");
+                  errorMessage = 'User not found';
                 } else if (e.code == 'wrong-password') {
-                  devtools.log("wrong password ");
+                  errorMessage = 'Wrong password ';
+                } else {
+                  errorMessage = 'Error occureced ${e.message}';
                 }
+
+                await ShowErrorDialog(context, errorMessage);
+                // if (e.code == 'user-not-found') {
+                //   await ShowErrorDialog(context, 'User not found');
+                // } else if (e.code == 'wrong-password') {
+                //   devtools.log("wrong password ");
+                // }
               }
             },
             child: Text("Login "),
@@ -91,4 +102,24 @@ class _LoginViewState extends State<LoginView> {
       ),
     );
   }
+}
+
+Future<void> ShowErrorDialog(BuildContext context, String message) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text('An error occurred'),
+        content: Text(message),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text("Ok"),
+          ),
+        ],
+      );
+    },
+  );
 }
